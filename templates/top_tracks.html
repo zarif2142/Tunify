@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Top Tracks</title>
+</head>
+<body>
+    <h1>Your Top Tracks on Spotify</h1>
+    
+    <ul>
+        {% for track in top_tracks %}
+            <li>{{ track.name }} by {{ track.artists[0].name }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add more HTML and CSS to style the page as desired -->
+</body>
+</html>

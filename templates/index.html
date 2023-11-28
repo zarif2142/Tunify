@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tunify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <header>
+        <h1>Welcome to Tunify</h1>
+    </header>
+    <main>
+        <div class="container">
+            <section class="project-info">
+                <h2>About Tunify</h2>
+                <p>
+                    Tunify is a music discovery web app that provides insights into your Spotify account. Discover your favorite songs, artists, and genres.
+                </p>
+            </section>
+            <section class="login-section">
+                <h2>Log In with Spotify</h2>
+                <p>Click the button below to log in and access your personalized music data.</p>
+                <a href="/spotify-login" class="spotify-login-button">Log In with Spotify</a>
+            </section>
+
+
+            </section>
+        </div>
+    </main>
+</body>
+</html>

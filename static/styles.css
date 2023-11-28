@@ -1,0 +1,34 @@
+body {
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* Light text for better readability */
+    font-family: 'Arial', sans-serif; /* Consistent font */
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #1DB954; /* Spotify green color for headings */
+    text-align: center;
+}
+
+ul {
+    list-style: none; /* Removes default list styling */
+    padding: 0;
+}
+
+p {
+    text-align: center;
+    color: #cccccc; /* Slightly muted text color for the footer */
+}
+
+li {
+    background-color: #282828; /* Slightly lighter background for list items */
+    border-radius: 5px; /* Rounded corners for list items */
+    margin-bottom: 10px; /* Spacing between list items */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    text-align: center;
+}
+
+
