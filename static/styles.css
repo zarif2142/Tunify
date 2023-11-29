@@ -3,7 +3,7 @@ body {
     color: #ffffff; /* Light text for better readability */
     font-family: 'Arial', sans-serif; /* Consistent font */
     margin: 0;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -14,6 +14,7 @@ h1 {
 
 ul {
     list-style: none; /* Removes default list styling */
+    background-color: transparent;
     padding: 0;
 }
 
@@ -22,13 +23,161 @@ p {
     color: #cccccc; /* Slightly muted text color for the footer */
 }
 
+.list-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.list {
+    flex: 1; /* Each list takes equal space */
+    margin: 10px; /* Spacing between lists */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the buttons horizontally */
+}
+
+/*links on redirect page*/
+.spotify-link {
+    display: inline-block; /* Allows the width to be set */
+    background-color: rgba(128, 128, 128, 0.8); /* Grey with transparency */
+    color: white; /* Text color */
+    padding: 8px 20px; /* Reduced vertical padding inside the buttons */
+    margin: 2px; /* Reduced vertical margin between the buttons */
+    text-align: center; /* Center the text inside the buttons */
+    border-radius: 20px; /* Rounded corners */
+    text-decoration: none; /* Removes underline from links */
+    width: 275px; /* Set a fixed width for all buttons */
+    box-sizing: border-box; /* Ensures padding is included in the width */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    border: 1px solid #fff; /* White border for the button */
+}
+.spotify-link:hover {
+    background-color: #1a8741; /* Darker green on hover */
+}
+
+
+
 li {
-    background-color: #282828; /* Slightly lighter background for list items */
+    background-color: transparent; /* Slightly lighter background for list items */
     border-radius: 5px; /* Rounded corners for list items */
     margin-bottom: 10px; /* Spacing between list items */
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
     text-align: center;
+    list-style-type: none;
 }
+
+
+
+
+
+/*Original login page*/
+.spotify-login-button {
+    background-color: #1DB954; /* Spotify green */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px; /* Rounded edges */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 10px;
+}
+
+.login-section p {
+    padding-bottom: 10px; /* Adds 10px space below the paragraph */
+}
+
+.spotify-login-button:hover {
+    background-color: #1A8741; /* A darker green */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Stacks the flex items vertically */
+    align-items: center; /* Centers the items horizontally */
+    justify-content: center; /* Centers the items vertically if there is space */
+    gap: 20px; /* Space between the stacked items */
+    padding: 20px;
+}
+
+
+.project-info, .login-section {
+    width: 80%; /* Adjust this percentage to match the width of the top box */
+    margin: auto; /* This will center the box if it's a block element */
+    background: #000000c0; /* Semi-transparent black */
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+    }
+}
+
+header {
+    width: 80%; /* This should be the same as the other boxes */
+    margin: auto; /* Center the header */
+    /* Other styles... */
+}
+
+
+
+
+
+/*footer stuff with links and buttons*/
+footer {
+    background-color: transparent; /* Dark background for footer */
+    color: #fff; /* White text color */
+    padding: 20px 0; /* Padding above and below the footer content */
+    text-align: center; /* Center align the content */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    gap: 20px; /* Space between the links */
+}
+
+.footer-link {
+    background-color: transparent; /* Set to transparent */
+    color: #fff; /* White text color for links */
+    text-decoration: none; /* No underline */
+    padding: 10px 15px; /* Padding inside the links */
+    border: 2px solid #fff; /* White border for the feedback button */
+    border-radius: 5px; /* Rounded corners for the feedback button */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+
+.footer-link {
+    background-color: rgba(128, 128, 128, 0.8); /* Grey with transparency */
+}
+
+.footer-button {
+    background-color: #1DB954; /* Spotify green for the feedback button */
+    border: none; /* No border for the feedback button */
+}
+
+.footer-link:hover, .footer-button:hover {
+    background-color: #1DB954; /* Spotify green on hover */
+    color: #fff; /* White text color for links on hover */
+}
+
+/* Responsive footer for smaller screens */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Stack the items vertically */
+    }
+}
+
+
+
+
 
 

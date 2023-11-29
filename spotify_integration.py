@@ -31,16 +31,30 @@ def spotify_login():
 
 
 
-
 @app.route('/redirect')
 def spotify_redirect():
     code = request.args.get('code')
     token_info = sp_oauth.get_access_token(code)
     sp = spotipy.Spotify(auth=token_info['access_token'])
+
+
+    # Fetch the user's profile data to get the username
+    user_profile = sp.current_user()
+    username = user_profile['display_name']  # or user_profile['id'] if display_name is not available
+
+    # Get the top tracks
     top_tracks = sp.current_user_top_tracks(limit=10)
-    return render_template('redirect.html', top_tracks=top_tracks['items'])
+
+    # Get the top artists
+    top_artists = sp.current_user_top_artists(limit=10)
+
+
+
+    # Pass both top tracks and top artists to the template
+    return render_template('redirect.html', username=username, top_artists=top_artists['items'], top_tracks=top_tracks['items'])
 
 
 
 if __name__ == "__main__":
     app.run()
+

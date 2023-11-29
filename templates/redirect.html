@@ -1,33 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect - Tunify</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Redirect - Tunify</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <style>
+            /* Style for the logo */
+            #logo {
+                position: absolute; /* Position the logo */
+                top: 10px; /* Distance from the top */
+                left: 10px; /* Distance from the left */
+                width: 100px; /* Adjust the width as needed */
+                height: auto; /* Maintain aspect ratio */
+            }
+        </style>
+    </head>
 <body>
-    <h1>Your Top 10 Most Listened To Artists:</h1>
-    <ul>
-        {% for artist in top_artists %}
-        <li>{{ artist.name }}</li>
-        {% endfor %}
-    </ul>
+    <img id="logo" src="{{ url_for('static', filename='tunify.png') }}" alt="Tunify Logo">
+    <h1>Good to see you, {{ username }}!</h1>
+    <div class="list-container">
+        <div class="list">
+            <h1>Your Top 10 Most Listened To Artists:</h1>
+            <ul>
+                {% for artist in top_artists %}
+                    <li><a href="{{ artist.external_urls.spotify }}" class="spotify-link">{{ artist.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        
 
-    <h1>Your Top Albums on Spotify</h1>
-    <ul>
-        {% for album in top_albums %}
-            <li>{{ album.name }} by {{ album.artists[0].name }}</li>
-        {% endfor %}
-    </ul>
-
-    <h1>Your Top Tracks on Spotify</h1>
-    <ul>
-        {% for track in top_tracks %}
-            <li>{{ track.name }} by {{ track.artists[0].name }}</li>
-        {% endfor %}
-    </ul>
-
+        <div class="list">
+            <h1>Your Top Tracks on Spotify</h1>
+            <ul>
+                {% for track in top_tracks %}
+                    <li><a href="{{ track.external_urls.spotify }}" class="spotify-link">{{ track.name }} by {{ track.artists[0].name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        
+    </div>
+    <footer>
+        <div class="footer-container">
+            <a href="https://github.com/zarif2142" target="_blank" class="footer-link">GitHub</a>
+            <a href="https://www.linkedin.com/in/zarif-ahmed1/" target="_blank" class="footer-link">LinkedIn</a>
+            <a href="https://open.spotify.com/user/31yb5af2ibb3oz3eck55qnupxqdm" target="_blank" class="footer-link">Spotify Profile</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeOb0Lxz732L6XZqTEN5b6-fAcRJ2pV79txTC6vCP-ekg-fOA/viewform?usp=sf_link" target="_blank" class="footer-link">Feedback</a>
+        </div>
+    </footer>
+    
     <p>Thank you for using my app!</p>
 </body>
 </html>
