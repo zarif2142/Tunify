@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, session
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+import random
 
 app = Flask(__name__)
 
@@ -36,6 +37,7 @@ def spotify_redirect():
     code = request.args.get('code')
     token_info = sp_oauth.get_access_token(code)
     sp = spotipy.Spotify(auth=token_info['access_token'])
+    session['access_token'] = token_info['access_token']  # Save the access token in the session
 
 
     # Fetch the user's profile data to get the username
@@ -57,4 +59,15 @@ def spotify_redirect():
 
 if __name__ == "__main__":
     app.run()
+
+
+@app.route('/get-song-recommendation')
+def get_song_recommendation_route():
+    access_token = session.get('access_token')
+    if access_token:
+        sp = spotipy.Spotify(auth=access_token)
+        song_recommendation = get_song_recommendation(sp)
+        return jsonify(song_recommendation)
+    else:
+        return jsonify({'error': 'User not authenticated'}), 401
 
