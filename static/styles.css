@@ -1,5 +1,5 @@
 body {
-    background-color: #121212; /* Dark background */
+    background: linear-gradient(to bottom, grey 0%, #000000 40%);
     color: #ffffff; /* Light text for better readability */
     font-family: 'Arial', sans-serif; /* Consistent font */
     margin: 0;
@@ -8,6 +8,7 @@ body {
 }
 
 h1 {
+    margin-bottom: 10px; /* Reduce the bottom margin of the h1 element */
     color: #1DB954; /* Spotify green color for headings */
     text-align: center;
 }
@@ -20,10 +21,11 @@ ul {
 
 p {
     text-align: center;
-    color: #cccccc; /* Slightly muted text color for the footer */
+    color: white; /* Slightly muted text color for the footer */
 }
 
 .list-container {
+    color:transparent;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap; /* Ensures responsiveness */
@@ -31,7 +33,6 @@ p {
 
 .list {
     flex: 1; /* Each list takes equal space */
-    margin: 10px; /* Spacing between lists */
     display: flex;
     flex-direction: column;
     align-items: center; /* Centers the buttons horizontally */
@@ -51,9 +52,13 @@ p {
     box-sizing: border-box; /* Ensures padding is included in the width */
     transition: background-color 0.3s; /* Smooth transition for hover effect */
     border: 1px solid #fff; /* White border for the button */
+    transition: transform 0.3s ease; /* Smooth transition for the transform */
+
 }
 .spotify-link:hover {
-    background-color: #1a8741; /* Darker green on hover */
+    background-color: #1a8741; /* Spotify green on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+
 }
 
 
@@ -63,7 +68,7 @@ li {
     border-radius: 5px; /* Rounded corners for list items */
     margin-bottom: 10px; /* Spacing between list items */
     padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    box-shadow: none;
     text-align: center;
     list-style-type: none;
 }
@@ -82,7 +87,15 @@ li {
     font-weight: bold;
     font-size: 1.2em;
     transition: background-color 0.3s, transform 0.3s;
-    margin-top: 10px;
+    margin-top: 20px; /* Increase margin if needed */
+    margin-bottom: 20px; /* Increase margin if needed */
+    
+}
+
+.login-section {
+    /* existing styles */
+    padding-top: 50px; /* Increase as needed */
+    padding-bottom: 50px; /* Increase as needed */
 }
 
 .login-section p {
@@ -98,11 +111,11 @@ li {
     display: flex;
     flex-direction: column; /* Stacks the flex items vertically */
     align-items: center; /* Centers the items horizontally */
-    justify-content: center; /* Centers the items vertically if there is space */
+    justify-content: space-between; /* Distributes the space */
     gap: 20px; /* Space between the stacked items */
     padding: 20px;
+    min-height: 75vh; /* Adjust the min-height as necessary */
 }
-
 
 .project-info, .login-section {
     width: 80%; /* Adjust this percentage to match the width of the top box */
@@ -176,8 +189,68 @@ footer {
     }
 }
 
+/*song recommendation button CSS*/
+.spotify-song-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #1DB954; /* Spotify green */
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    /* Add any other styles to match your list buttons */
+}
+
+.spotify-song-button {
+    /* existing styles */
+    transition: transform 0.3s ease; /* Animation effect duration */
+}
+
+.spotify-song-button:hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    background-color:#1A8741; 
+}
+
+/* Style for the shuffle button */
+#shuffle-btn {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    height: 40px;
+}
 
 
+/* Style for the recommendation and shuffle button container */
+.recommendation-section {
+    display: flex;
+    justify-content: center; /* Center the buttons container */
+    align-items: center; /* Align the buttons vertically */
+}
 
 
+/* Style for the recommendation text */
+#recommendation-container {
+    margin-right: 10px; /* Add a small margin to separate the buttons */
+    /* Ensure there is no excessive padding or margin that could push the shuffle button away */
+}
+/* Style for the recommendation text */
+#song-recommendation {
+    text-align: center; /* Center the text within its container */
+    flex: 1; /* Allow the text to take up remaining space */
+}
 
+#shuffle-container {
+    align-items: center; /* Center items vertically */
+}
+
+#recommendation-container, #shuffle-btn {
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+.project-info, .login-section, .about-me {
+    /* existing styles... */
+    flex-grow: 0; /* Set flex-grow to 0 to prevent it from growing too much */
+    padding: 20px; /* Adjust padding as necessary */
+    margin-bottom: 20px; /* Adjust bottom margin as necessary */
+}

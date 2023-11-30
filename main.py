@@ -72,7 +72,8 @@ def get_song_recommendation(sp):
         recommended_track = recommendations[0]
         return {
             'title': recommended_track['name'],
-            'artist': recommended_track['artists'][0]['name']
+            'artist': recommended_track['artists'][0]['name'],
+            'spotify_url': recommended_track['external_urls']['spotify']  # Spotify URL of the track
         }
     else:
         return None

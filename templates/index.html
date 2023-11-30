@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tunify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
         /* Style for the logo */
         #logo {
-            position: absolute; /* Position the logo */
-            top: 10px; /* Distance from the top */
-            left: 10px; /* Distance from the left */
-            width: 100px; /* Adjust the width as needed */
-            height: auto; /* Maintain aspect ratio */
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            height: auto;
         }
     </style>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
 </head>
 <body>
     <img id="logo" src="{{ url_for('static', filename='tunify.png') }}" alt="Tunify Logo">
@@ -27,16 +26,22 @@
             <section class="project-info">
                 <h2>About Tunify</h2>
                 <p>
-                    Tunify is a music discovery web app that provides insights into your Spotify account. Discover your favorite songs, artists, and genres.
+                    Tunify is a cutting-edge music discovery web app that integrates seamlessly with Spotify. With Tunify, you can dive deep into musical analytics, uncover hidden gems, and revisit the soundtracks of your life.
+                    Tunify tells you things that spotify wrapped won't tell you, and gives personalized music suggestions with the click of a button!
+                </p>
+            </section>
+            <section class="project-info">
+                <h2>About Me</h2>
+                <p>
+                    Hi there! My name is Zarif. I'm the creator of Tunify, a passionate music enthusiast and software developer dedicated to enhancing your listening experience. My passion and journey with music and coding has led me to develop this app to share the joy of music with you.
+                    I've worked on other web apps, but this is the project that I've been the most passionate about and spent the most time on. I utilized flask, a python microframework, alongside python and front-end languages to build this site for you.
+                    Feel free to give me any feedback in the form below if you have any advice for stuff I can work on!
                 </p>
             </section>
             <section class="login-section">
                 <h2>Log In with Spotify</h2>
-                <p>Click the button below to log in and access your personalized music data.</p>
+                <p>Connect with Spotify to unlock your personal music journey. See your trends, favorites, and more.</p>
                 <a href="/spotify-login" class="spotify-login-button">Log In with Spotify</a>
-            </section>
-
-
             </section>
         </div>
     </main>
@@ -48,5 +53,6 @@
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeOb0Lxz732L6XZqTEN5b6-fAcRJ2pV79txTC6vCP-ekg-fOA/viewform?usp=sf_link" target="_blank" class="footer-link">Feedback</a>
         </div>
     </footer>
+    <p>Thank you for using my app!</p>
 </body>
 </html>

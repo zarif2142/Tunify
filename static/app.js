@@ -61,19 +61,51 @@ function getAuthorizationCodeFromURL() {
 // Call the onPageLoad function when the page loads
 window.addEventListener('load', onPageLoad);
 
-document.getElementById('shuffle-btn').addEventListener('click', function() {
-    console.log('Shuffle button clicked'); // This should appear in the console when you click the button
+
+
+
+
+
+function onPageLoad() {
+    // Extract the authorization code from the URL (Add your logic here)
+    const authorizationCode = getAuthorizationCodeFromURL();
+
+    if (authorizationCode) {
+        // Call the function to exchange the authorization code for tokens
+        exchangeAuthorizationCode(authorizationCode);
+    } else {
+        // No authorization code, directly fetch song recommendation
+        fetchSongRecommendation();
+    }
+}
+
+// Function to fetch song recommendation
+function fetchSongRecommendation() {
     fetch('/get-song-recommendation')
-        .then(response => {
-            console.log('Received response'); // This should appear once the fetch receives a response
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            console.log('Data:', data); // This should log the data received from the server
-            document.getElementById('song-recommendation').textContent = `${data.title} by ${data.artist}`;
+            const recommendationDiv = document.getElementById('song-recommendation');
+            recommendationDiv.innerHTML = ''; // Clear previous recommendations
+
+            if(data.title && data.artist && data.spotify_url) {
+                const songLink = document.createElement('a');
+                songLink.href = data.spotify_url; // Set the href to the Spotify URL
+                songLink.target = '_blank'; // Open in a new tab
+                songLink.className = 'spotify-song-button'; // Add styling class if needed
+                songLink.textContent = `Listen to ${data.title} by ${data.artist}`;
+
+                recommendationDiv.appendChild(songLink); // Append the anchor element to the recommendation div
+            } else {
+                recommendationDiv.textContent = 'No recommendation available.';
+            }
         })
-        .catch(error => console.error('Error:', error));
-});
+        .catch(error => {
+            console.error('Error fetching song recommendation:', error);
+        });
+}
 
+// Event listener for the shuffle image button
+document.querySelector('.shuffle-button').addEventListener('click', fetchSongRecommendation);
 
-
+// Call the onPageLoad function when the page loads
+window.addEventListener('load', onPageLoad);

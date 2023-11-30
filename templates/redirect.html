@@ -41,11 +41,18 @@
         
         
     </div>
+    <h1>Here's some song recommendations tailored for you, {{ username }}:</h1>
     <div class="recommendation-section">
-        <h1>Song Recommendation</h1>
-        <p id="song-recommendation">Here will be your recommended song!</p>
-        <button id="shuffle-btn">Shuffle</button>
+        <div id="recommendation-container">
+            <p id="song-recommendation">Here will be your recommended song!</p>
+        </div>
+        <div id="shuffle-container">
+            <img id="shuffle-btn" src="{{ url_for('static', filename='shuffle.png') }}" alt="Shuffle" class="shuffle-button">
+        </div>
     </div>
+    
+    
+    
     
     <footer>
         <div class="footer-container">
@@ -61,4 +68,3 @@
 
 </body>
 </html>
-s
