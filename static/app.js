@@ -60,3 +60,20 @@ function getAuthorizationCodeFromURL() {
 
 // Call the onPageLoad function when the page loads
 window.addEventListener('load', onPageLoad);
+
+document.getElementById('shuffle-btn').addEventListener('click', function() {
+    console.log('Shuffle button clicked'); // This should appear in the console when you click the button
+    fetch('/get-song-recommendation')
+        .then(response => {
+            console.log('Received response'); // This should appear once the fetch receives a response
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data:', data); // This should log the data received from the server
+            document.getElementById('song-recommendation').textContent = `${data.title} by ${data.artist}`;
+        })
+        .catch(error => console.error('Error:', error));
+});
+
+
+
