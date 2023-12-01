@@ -257,22 +257,21 @@ footer {
 }
 
 
-.logout-button {
+#logout-button {
     position: absolute;
     top: 10px;
     right: 10px;
-    display: inline-block;
-    padding: 10px 20px;
     background-color: #1DB954; /* Spotify green */
     color: white;
+    padding: 8px 16px;
     text-decoration: none;
     border-radius: 20px;
     font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
-    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.logout-button:hover {
-    background-color: #1A8741; /* A darker shade of green for hover state */
-    transform: scale(1.05); /* Slightly enlarge the button on hover */
+#logout-button:hover {
+    background-color: #1A8741; /* A darker green for hover */
+    transform: scale(1.05); /* Slightly larger on hover */
 }
+

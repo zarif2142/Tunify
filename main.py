@@ -5,6 +5,8 @@ from spotipy.oauth2 import SpotifyOAuth
 import os
 from dotenv import load_dotenv
 from datetime import timedelta #inactivity timer
+import logging #log user access tokens, making sure they're unique to each user
+
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -101,5 +103,8 @@ def make_session_permanent():
     app.permanent_session_lifetime = timedelta(minutes=10)
 
 
+print(f"Access token for session: {session['access_token']}")
+
 if __name__ == "__main__":
+    logging.basicConfig(filename='app.log', level=logging.DEBUG)
     app.run()
