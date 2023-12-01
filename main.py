@@ -1,9 +1,10 @@
-from flask import Flask, request, render_template, redirect, jsonify, session
+from flask import Flask, request, render_template, redirect, jsonify, session, url_for
 from flask_cors import CORS  # Import the CORS object
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import os
 from dotenv import load_dotenv
+from datetime import timedelta #inactivity timer
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -79,6 +80,26 @@ def get_song_recommendation(sp):
         }
     else:
         return None
+
+@app.route('/logout')
+def logout():
+    session.clear()  # Clear the session
+    return redirect(url_for('index'))  # Redirect to the index page
+
+ 
+app.config.update(
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE='Lax',  # or 'Strict'
+)
+
+
+# Set permanent session lifetime, for example, 10 minutes of inactivity
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
+    app.permanent_session_lifetime = timedelta(minutes=10)
+
 
 if __name__ == "__main__":
     app.run()

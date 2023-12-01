@@ -14,9 +14,36 @@
                 width: 100px; /* Adjust the width as needed */
                 height: auto; /* Maintain aspect ratio */
             }
+
+            /* Style for the logout button */
+        #logout-btn {
+            position: absolute; /* Position the logout button */
+            top: 10px; /* Distance from the top */
+            right: 10px; /* Distance from the right */
+            padding: 10px 20px; /* Padding inside the button */
+            background-color: #f44336; /* Red background color */
+            color: white; /* White text */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            text-decoration: none; /* No underline for text */
+        }
+
+        /* Clearfix for the header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
         </style>
     </head>
 <body>
+    <div class="header">
+        <img id="logo" src="{{ url_for('static', filename='tunify.png') }}" alt="Tunify Logo">
+        <a id="logout-btn" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
     <img id="logo" src="{{ url_for('static', filename='tunify.png') }}" alt="Tunify Logo">
     <h1>Good to see you, {{ username }}!</h1>
     <div class="list-container">
