@@ -5,21 +5,19 @@ from spotipy.oauth2 import SpotifyOAuth
 import os
 from dotenv import load_dotenv
 
-
+# Initialize Flask app
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes, helps with recommendations
 
 # Load environment variables
 load_dotenv()
 
-# Initialize Flask app
-app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY")  
 
 # Spotify OAuth settings
 SPOTIPY_CLIENT_ID = os.getenv("CLIENT_ID")
 SPOTIPY_CLIENT_SECRET = os.getenv("CLIENT_SECRET")
-SPOTIPY_REDIRECT_URI = "https://tunify-phi.vercel.app/"
+SPOTIPY_REDIRECT_URI = "https://tunify-89a2e48d4f34.herokuapp.com/redirect"
 
 # Initialize Spotipy with OAuth
 sp_oauth = SpotifyOAuth(SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, scope="user-top-read playlist-modify-private")
