@@ -1,10 +1,10 @@
-// Replace 'YOUR_CLIENT_ID' and 'YOUR_CLIENT_SECRET' with your actual values
 const clientId = '298e09f0d6594fa599cff0b1e36f9222';
 const clientSecret = 'bf366f460b9e4496a29b6ebdcd495844';
-const redirectUri = 'http://localhost:5000/redirect'; // Replace with your actual redirect URI
+const redirectUri = 'http://localhost:5000/redirect'; // Replace with actual redirect URI
 
 // Function to exchange the authorization code for tokens (Add your logic here)
 async function exchangeAuthorizationCode(authorizationCode) {
+
     // Spotify token endpoint
     const tokenUrl = 'https://accounts.spotify.com/api/token';
 
@@ -41,17 +41,6 @@ async function exchangeAuthorizationCode(authorizationCode) {
     }
 }
 
-// Example function that can be called when the page loads
-function onPageLoad() {
-    // Extract the authorization code from the URL (Add your logic here)
-    const authorizationCode = getAuthorizationCodeFromURL();
-
-    if (authorizationCode) {
-        // Call the function to exchange the authorization code for tokens
-        exchangeAuthorizationCode(authorizationCode);
-    }
-}
-
 // Function to extract the authorization code from the URL (Add your logic here)
 function getAuthorizationCodeFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -60,10 +49,6 @@ function getAuthorizationCodeFromURL() {
 
 // Call the onPageLoad function when the page loads
 window.addEventListener('load', onPageLoad);
-
-
-
-
 
 
 function onPageLoad() {
@@ -106,6 +91,3 @@ function fetchSongRecommendation() {
 
 // Event listener for the shuffle image button
 document.querySelector('.shuffle-button').addEventListener('click', fetchSongRecommendation);
-
-// Call the onPageLoad function when the page loads
-window.addEventListener('load', onPageLoad);

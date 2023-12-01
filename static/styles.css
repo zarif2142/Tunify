@@ -55,6 +55,7 @@ p {
     transition: transform 0.3s ease; /* Smooth transition for the transform */
 
 }
+
 .spotify-link:hover {
     background-color: #1a8741; /* Spotify green on hover */
     transform: scale(1.05); /* Slightly enlarge the button on hover */

@@ -1,15 +1,20 @@
 from flask import Flask, request, render_template, redirect, jsonify, session
+from flask_cors import CORS  # Import the CORS object
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import os
 from dotenv import load_dotenv
+
+
+app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes, helps with recommendations
 
 # Load environment variables
 load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'  # Replace with your real secret key
+app.secret_key = os.getenv("FLASK_SECRET_KEY")  
 
 # Spotify OAuth settings
 SPOTIPY_CLIENT_ID = os.getenv("CLIENT_ID")
@@ -39,7 +44,6 @@ def spotify_redirect():
 def recommendation():
     access_token = session.get('access_token')
     if not access_token:
-        # Redirect to login if the user doesn't have an access token
         return redirect("/spotify-login")
     
     sp = spotipy.Spotify(auth=access_token)
@@ -53,15 +57,15 @@ def recommendation():
 def get_song_recommendation_route():
     try:
         access_token = session.get('access_token')
-        if access_token:
-            sp = spotipy.Spotify(auth=access_token)
-            return jsonify(get_song_recommendation(sp))
-        else:
+        if not access_token:
             return jsonify({'error': 'User not authenticated'}), 401
+        
+        sp = spotipy.Spotify(auth=access_token)
+        recommendation = get_song_recommendation(sp)
+        return jsonify(recommendation)
     except Exception as e:
-        app.logger.error(f'An error occurred: {e}')
+        print(f"An error occurred: {e}")  # Log any exception
         return jsonify({'error': 'Internal Server Error', 'message': str(e)}), 500
-
 
 def get_song_recommendation(sp):
     top_tracks = sp.current_user_top_tracks(limit=10)['items']
@@ -80,5 +84,3 @@ def get_song_recommendation(sp):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
