@@ -19,7 +19,7 @@ app.secret_key = os.getenv("FLASK_SECRET_KEY")
 # Spotify OAuth settings
 SPOTIPY_CLIENT_ID = os.getenv("CLIENT_ID")
 SPOTIPY_CLIENT_SECRET = os.getenv("CLIENT_SECRET")
-SPOTIPY_REDIRECT_URI = "http://localhost:5000/redirect"
+SPOTIPY_REDIRECT_URI = "https://tunify-phi.vercel.app/"
 
 # Initialize Spotipy with OAuth
 sp_oauth = SpotifyOAuth(SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, scope="user-top-read playlist-modify-private")
